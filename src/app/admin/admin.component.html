@@ -1,0 +1,31 @@
+<button [matMenuTriggerFor]="appMenu" mat-icon-button>
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #appMenu="matMenu">
+  <button [mat-menu-trigger-for]="discord" mat-menu-item>Discord Servers</button>
+  <button [mat-menu-trigger-for]="minecraft" mat-menu-item>Minecraft Servers</button>
+  <button [mat-menu-trigger-for]="ark" mat-menu-item>ARK/Atlas Servers</button>
+  <button (click)="toggleAdminSettings()" mat-menu-item>Admin Settings</button>
+</mat-menu>
+
+<mat-menu #discord="matMenu">
+  <span *ngFor="let d of serversDiscord">
+     <button mat-menu-item> {{d.name}}</button>
+  </span>
+</mat-menu>
+
+<mat-menu #minecraft="matMenu">
+  <span *ngFor="let m of serversMinecraft">
+     <button mat-menu-item> {{m.name}}</button>
+  </span>
+</mat-menu>
+
+<mat-menu #ark="matMenu">
+  <span *ngFor="let a of serversArk">
+     <button mat-menu-item> {{a.name}}</button>
+  </span>
+</mat-menu>
+
+
+<app-admin-other [showAdminOther]="showAdminOther"></app-admin-other>

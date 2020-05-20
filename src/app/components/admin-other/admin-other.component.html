@@ -1,0 +1,13 @@
+<div *ngIf="showAdminOther">
+  <form (ngSubmit)="onSubmit()" [formGroup]="Form">
+    <label for="token">Access Token</label>
+    <div>
+      <input [type]="hide ? 'password' : 'text'" id="token" matInput readonly="true" value="{{settings.token}}">
+      <mat-icon (click)="hide = !hide" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </div>
+    <div>
+      <button color="primary" mat-raised-button>Regenerate</button>
+    </div>
+  </form>
+</div>
+

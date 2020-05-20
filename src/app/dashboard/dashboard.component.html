@@ -1,0 +1,23 @@
+<div class="container">
+  <app-loggedin-status [discordAvatar]="discordAvatar" [discordDiscriminator]="discordDiscriminator"
+                       [discordUsername]="discordUsername"></app-loggedin-status>
+</div>
+<div class="container">
+  <app-service-status serviceColor='#9146FF' serviceLink='/twitch' serviceLinked="true" serviceLogo='twitch.svg'
+                      serviceName='Twitch'></app-service-status>
+  <div class="divider"></div>
+  <app-service-status serviceColor='#F86754' serviceLink='/patreon' serviceLinked="false" serviceLogo='patreon.svg'
+                      serviceName='Patreon'></app-service-status>
+  <div class="divider"></div>
+  <app-service-status serviceColor='#974A0C' serviceLink='/minecraft' serviceLinked="false" serviceLogo='Minecraft.ico'
+                      serviceName='Minecraft'></app-service-status>
+  <div class="divider"></div>
+  <app-service-status serviceColor='#2a475e' serviceLink='/steam' serviceLinked="false" serviceLogo='steam.svg'
+                      serviceName='Steam'></app-service-status>
+  <div class="divider"></div>
+  <app-service-status serviceColor='#ff0000' serviceLink='/youtube' serviceLinked="false" serviceLogo='youtube.png'
+                      serviceName='Youtube'></app-service-status>
+  <div class="divider"></div>
+  <app-service-status serviceColor='#1fbaed' serviceLink='/mixer' serviceLinked="false" serviceLogo='mixer.svg'
+                      serviceName='Mixer'></app-service-status>
+</div>
