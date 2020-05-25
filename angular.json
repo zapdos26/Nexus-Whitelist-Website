@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Nexus-Whitelist-Website": {
+    "nexus-whitelist-website": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MC-Whitelister",
+            "outputPath": "dist/Nexus-Whitelist-Website",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MC-Whitelister:build"
+            "browserTarget": "Nexus-Whitelist-Website:build",
+            "port" : 80
           },
           "configurations": {
             "production": {
-              "browserTarget": "MC-Whitelister:build:production"
+              "browserTarget": "Nexus-Whitelist-Website:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MC-Whitelister:build"
+            "browserTarget": "Nexus-Whitelist-Website:build"
           }
         },
         "test": {
@@ -112,18 +113,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "MC-Whitelister:serve"
+            "devServerTarget": "Nexus-Whitelist-Website:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "MC-Whitelister:serve:production"
+              "devServerTarget": "Nexus-Whitelist-Website:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "MC-Whitelister",
+  "defaultProject": "Nexus-Whitelist-Website",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"

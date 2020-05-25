@@ -20,15 +20,15 @@ export class ServiceStatusComponent implements OnInit {
   constructor() {
   }
 
-  private _serviceLinked = true;
+  private serviceLinked_ = true;
 
   @Input('serviceLinked')
   get serviceLinked(): boolean {
-    return this._serviceLinked;
+    return this.serviceLinked_;
   }
 
   set serviceLinked(value: boolean) {
-    this._serviceLinked = '' + value !== 'false';
+    this.serviceLinked_ = '' + value !== 'false';
   }
 
   ngOnInit() {

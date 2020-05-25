@@ -1,23 +1,23 @@
-<div class="container">
-  <app-loggedin-status [discordAvatar]="discordAvatar" [discordDiscriminator]="discordDiscriminator"
-                       [discordUsername]="discordUsername"></app-loggedin-status>
-</div>
-<div class="container">
-  <app-service-status serviceColor='#9146FF' serviceLink='/twitch' serviceLinked="true" serviceLogo='twitch.svg'
+<app-loggedin-status></app-loggedin-status>
+<div class="center">
+  <app-service-status serviceColor='#9146FF' [serviceLink]="twitchURL" [serviceLinked]="userData['twitchId']!=null" serviceLogo='twitch.svg'
                       serviceName='Twitch'></app-service-status>
   <div class="divider"></div>
-  <app-service-status serviceColor='#F86754' serviceLink='/patreon' serviceLinked="false" serviceLogo='patreon.svg'
+  <app-service-status serviceColor='#F86754' [serviceLink]='patreonUrl' [serviceLinked]="userData['patreonId']!=null" serviceLogo='patreon.svg'
                       serviceName='Patreon'></app-service-status>
   <div class="divider"></div>
-  <app-service-status serviceColor='#974A0C' serviceLink='/minecraft' serviceLinked="false" serviceLogo='Minecraft.ico'
+  <app-service-status serviceColor='#974A0C' serviceLink="/dashboard/minecraft" [serviceLinked]="userData['minecraftId']!=null" serviceLogo='Minecraft.ico'
                       serviceName='Minecraft'></app-service-status>
   <div class="divider"></div>
-  <app-service-status serviceColor='#2a475e' serviceLink='/steam' serviceLinked="false" serviceLogo='steam.svg'
+  <app-service-status serviceColor='#2a475e' serviceLink='/steam' [serviceLinked]="userData['steamId']!=null" serviceLogo='steam.svg'
                       serviceName='Steam'></app-service-status>
   <div class="divider"></div>
-  <app-service-status serviceColor='#ff0000' serviceLink='/youtube' serviceLinked="false" serviceLogo='youtube.png'
+  <app-service-status serviceColor='#ff0000' serviceLink='/youtube' [serviceLinked]="userData['youtubeID']!=null" serviceLogo='youtube.png'
                       serviceName='Youtube'></app-service-status>
   <div class="divider"></div>
-  <app-service-status serviceColor='#1fbaed' serviceLink='/mixer' serviceLinked="false" serviceLogo='mixer.svg'
+  <app-service-status serviceColor='#1fbaed' serviceLink='/mixer' [serviceLinked]="userData['mixerId']!=null" serviceLogo='mixer.svg'
                       serviceName='Mixer'></app-service-status>
+  <div class="divider"></div>
+  <app-service-status serviceColor='#708090' serviceLink="/admin" [serviceLinked]=false
+                      serviceName='Admin Settings'></app-service-status>
 </div>

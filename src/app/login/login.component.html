@@ -11,7 +11,7 @@
     </label>
   </div>
   <a [ngClass]="{'isDisabled':!checked}" [style.background-color]="checked ? '#7289DA':'#4c4c4c'"
-     [style.border-color]="checked ? '#667fd7':'#4c4c4c'" [style.color]="currentColor" class="button" href='/dashboard'
+     [style.border-color]="checked ? '#667fd7':'#4c4c4c'" [style.color]="currentColor" class="button" [href]="url"
      id='btn'>
     <svg aria-hidden="true" class="svg-inline--fa fa-discord fa-w-14" data-fa-i2svg="" data-icon="discord"
          data-prefix="fab" role="img" viewBox="0 0 448 512" width="1em" xmlns="http://www.w3.org/2000/svg">

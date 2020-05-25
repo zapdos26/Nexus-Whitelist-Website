@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CookieService} from "ngx-cookie-service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-loggedin-status',
@@ -6,21 +8,23 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./loggedin-status.component.scss']
 })
 export class LoggedinStatusComponent implements OnInit {
+  discordUsername:string;
+  discordDiscriminator:string;
+  discordAvatar:string;
 
-
-  @Input()
-  discordUsername: string;
-
-  @Input()
-  discordDiscriminator: string;
-
-  @Input()
-  discordAvatar: string;
-
-  constructor() {
+  constructor(private router:Router, private cookieService:CookieService) {
+    const user = JSON.parse(sessionStorage.getItem('discord'))
+    this.discordUsername = user.username
+    this.discordDiscriminator= user.discriminator
+    this.discordAvatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
   }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.cookieService.delete('token', '/')
+    this.router.navigate(['/login']).then()
   }
 
 }

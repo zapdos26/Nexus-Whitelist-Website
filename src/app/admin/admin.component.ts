@@ -1,5 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
+import {DiscordServer} from "../_models/DiscordServer";
+import {ShareDiscordServersService} from "../services/share-discord-servers/share-discord-servers.service";
 
 
 @Component({
@@ -8,25 +13,33 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  serversDiscord: any = ['Testing (123)'];
-  serversMinecraft: any = ['Minecraft Server (124)', 'Test (125)'];
-  serversArk: any = ['ArkTest (126)'];
-  discordUsername = 'Zapdos26';
-  discordDiscriminator = '2632';
-  discordAvatar = 'https://cdn.discordapp.com/avatars/136925587120979969/281235cce0fa4399db91c1e16810695e.png';
 
-  showAdminOther = false;
-  oppoSuitsForm = this.fb.group({
-    name: ['']
-  });
+  admin: Object = {patreonAccessToken: false, twitchAccessToken:false, mixerAccessToken:false}
+  servers: DiscordServer[]
 
-  constructor(public fb: FormBuilder) {
+  constructor(private http:HttpClient, private router: Router,private cookieService: CookieService,
+              private sharedDiscordServers: ShareDiscordServersService) {
+    this.http.get(environment.apiUrl+ '/admin/current' ,{
+      headers: {
+        "Authorization": `Bearer ${this.cookieService.get('token')}`
+      }
+    }).subscribe(data => {
+      if (data['admin'] != true) {
+        this.router.navigate(['/admin/agreement']).then()
+      }
+      this.admin = data
+    })
   }
 
   ngOnInit() {
-  }
-
-  toggleAdminSettings() {
-    this.showAdminOther = !this.showAdminOther;
+    this.sharedDiscordServers.sharedServers.subscribe(servers => this.servers = servers)
+    this.http.get(environment.apiUrl+ '/admin/current/discord/servers' ,{
+      headers: {
+        "Authorization": `Bearer ${this.cookieService.get('token')}`
+      }
+    }).subscribe(data => {
+      this.sharedDiscordServers.nextMessage(<DiscordServer[]> data)
+      console.log(this.servers)
+    })
   }
 }

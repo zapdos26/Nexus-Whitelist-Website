@@ -33,22 +33,22 @@ export class MinecraftServerComponent implements OnInit {
     password: new FormControl(this.server.password,
       [Validators.required, Validators.minLength(8)]
     ),
-    patreonAutosync: new FormControl(this.server.patreon['autosync']),
-    patreonMinimum: new FormControl(this.server.patreon['minimum'],
+    patreonAutosync: new FormControl(this.server.patreon.autosync),
+    patreonMinimum: new FormControl(this.server.patreon.minimum,
       [Validators.min(0)]
     ),
-    twitchAutosync: new FormControl(this.server.twitch['autosync']),
-    twitchFollow: new FormControl(this.server.twitch['follow']),
-    twitchPrime: new FormControl(this.server.twitch['prime']),
+    twitchAutosync: new FormControl(this.server.twitch.autosync),
+    twitchFollow: new FormControl(this.server.twitch.follow),
+    twitchPrime: new FormControl(this.server.twitch.prime),
     twitch1000: new FormControl(this.server.twitch['1000']),
     twitch2000: new FormControl(this.server.twitch['2000']),
     twitch3000: new FormControl(this.server.twitch['3000']),
-    mixerAutosync: new FormControl(this.server.mixer['autosync']),
-    mixerFollow: new FormControl(this.server.mixer['follow']),
-    mixerSubscribe: new FormControl(this.server.mixer['subscribe']),
-    youtubeAutosync: new FormControl(this.server.youtube['autosync']),
-    youtubeSubscribe: new FormControl(this.server.youtube['subscribe']),
-    youtubeMember: new FormControl(this.server.youtube['member']),
+    mixerAutosync: new FormControl(this.server.mixer.autosync),
+    mixerFollow: new FormControl(this.server.mixer.follow),
+    mixerSubscribe: new FormControl(this.server.mixer.subscribe),
+    youtubeAutosync: new FormControl(this.server.youtube.autosync),
+    youtubeSubscribe: new FormControl(this.server.youtube.subscribe),
+    youtubeMember: new FormControl(this.server.youtube.member),
   });
   hide = true;
 
@@ -62,7 +62,7 @@ export class MinecraftServerComponent implements OnInit {
   ngOnInit() {
   }
 
-  onRegisterSubmit(form) {
+  onRegisterSubmit() {
     console.warn(this.serverForm.value);
   }
 }

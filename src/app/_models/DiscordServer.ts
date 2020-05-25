@@ -1,6 +1,8 @@
 import {DiscordRole} from './DiscordRole';
 
 export class DiscordServer {
-  server: any;
+  id: string;
+  name:string;
+  ownerId: string;
   roles: DiscordRole[];
 }

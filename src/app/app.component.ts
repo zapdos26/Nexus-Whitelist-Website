@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import * as CryptoJS from 'crypto-js';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'MC-Whitelister';
+  title = 'Nexus Whitelist';
+  constructor() {
+    if(sessionStorage.getItem('state') == null){
+      sessionStorage.setItem('state',  CryptoJS.lib.WordArray.random(20).toString())
+    }
+  }
 }

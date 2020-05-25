@@ -14,19 +14,31 @@ import {LoggedinStatusComponent} from './components/loggedin-status/loggedin-sta
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {MinecraftServerComponent} from './components/minecraft-server/minecraft-server.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatIconModule,
-  MatInputModule,
-  MatMenuModule,
-  MatSelectModule
-} from '@angular/material';
-import {DiscordServerComponent} from './components/discord-server/discord-server.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
 import {AdminOtherComponent} from './components/admin-other/admin-other.component';
 import {BannedScrollComponent} from './components/banned-scroll/banned-scroll.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { DiscordCallbackComponent } from './callbacks/discord-callback/discord-callback.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { PatreonCallbackComponent } from './callbacks/patreon-callback/patreon-callback.component';
+import {CookieService} from "ngx-cookie-service";
+import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
+import { ErrorComponent } from './error/error.component';
+import { InterceptorService } from './services/interceptor/interceptor.service';
+import { LicensesComponent } from './licenses/licenses.component';
+import { DiscordRoleComponent } from './admin/components/discord-role/discord-role.component';
+import { AgreementComponent } from './admin/agreement/agreement.component';
+import { TwitchCallbackComponent } from './callbacks/twitch-callback/twitch-callback.component';
+import {ServicesAdminComponent} from "./admin/components/services-admin/services-admin.component";
+import {MatExpansionModule} from "@angular/material/expansion";
+import { DiscordServerComponent } from './admin/components/discord-server/discord-server.component';
+import { DiscordServersComponent } from './admin/components/discord-servers/discord-servers.component';
 
 
 @NgModule({
@@ -41,15 +53,26 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     LoggedinStatusComponent,
     SidebarComponent,
     MinecraftServerComponent,
-    DiscordServerComponent,
     AdminOtherComponent,
     BannedScrollComponent,
+    DiscordCallbackComponent,
+    PatreonCallbackComponent,
+    MinecraftComponent,
+    ErrorComponent,
+    LicensesComponent,
+    DiscordRoleComponent,
+    AgreementComponent,
+    TwitchCallbackComponent,
+    ServicesAdminComponent,
+    DiscordServerComponent,
+    DiscordServersComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -59,9 +82,14 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatCheckboxModule,
     MatMenuModule,
     MatCardModule,
-    ScrollingModule
+    ScrollingModule,
+    MatExpansionModule
   ],
-  providers: [],
+  providers: [CookieService,   {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
