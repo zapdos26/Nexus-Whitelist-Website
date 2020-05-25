@@ -62,7 +62,7 @@ export class MinecraftServerComponent implements OnInit {
   ngOnInit() {
   }
 
-  onRegisterSubmit() {
+  onRegisterSubmit(form) {
     console.warn(this.serverForm.value);
   }
 }

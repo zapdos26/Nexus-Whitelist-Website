@@ -1,0 +1,25 @@
+<mat-accordion style="padding: 10px">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Discord Servers
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div style="text-align: center; padding: 10px; font-size: 20px">
+      <mat-form-field style="width: 50%; text-align: center">
+        <mat-label>Select a Discord Server</mat-label>
+        <mat-select [(ngModel)]="selectedServer">
+          <mat-option *ngFor="let server of servers" [value]="server" [formControl]="serverSelector">
+            {{server.name}}
+          </mat-option>
+          <mat-option (click)="addBot()"> Add Discord Server</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <div>
+    <ng-template [ngIf]="selectedServer != undefined">
+      <app-discord-server [server]="selectedServer"></app-discord-server>
+    </ng-template>
+    </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

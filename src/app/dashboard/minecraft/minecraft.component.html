@@ -1,0 +1,20 @@
+<app-loggedin-status></app-loggedin-status>
+<div class="center">
+  <p style="font-size:30px"><b>Instructions</b></p>
+  <div style="text-align: left; width: 25%; display: inline-block">
+  <p>1. Login in the following Minecraft server IP: <b>mc.nexuswhitelist.com</b></p>
+  <p>2. Type the following command into chat: <b>/link</b></p>
+  <p>3. Copy the six character code and paste it into the box below</p>
+  <p>4. Click <b>Submit</b></p>
+  </div>
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Minecraft Auth Code</mat-label>
+      <input matInput [formControl]="code">
+      <mat-error *ngIf="code.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <p>
+      <button type="submit" mat-raised-button color="primary" [disabled]="code.invalid">Submit</button>
+    </p>
+  </form>
+</div>

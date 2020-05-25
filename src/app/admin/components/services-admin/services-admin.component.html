@@ -1,0 +1,16 @@
+<mat-accordion style="padding: 10px">
+    <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Services
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <app-service-status style="padding: 10px" [serviceLink]="twitchURL"  [serviceLinked]="false"
+                          serviceColor="#9146FF" serviceName="Twitch" serviceLogo='twitch.svg'></app-service-status>
+      <app-service-status style="padding: 10px" [serviceLink]="twitchURL"  [serviceLinked]="false"
+                          serviceColor="#F86754" serviceName="Patreon" serviceLogo='patreon.svg'></app-service-status>
+      <app-service-status style="padding: 10px" [serviceLink]="twitchURL"  [serviceLinked]="false"
+                          serviceColor="#1fbaed" serviceName="Mixer" serviceLogo='mixer.svg'></app-service-status>
+
+    </mat-expansion-panel>
+</mat-accordion>

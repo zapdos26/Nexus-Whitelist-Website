@@ -1,0 +1,20 @@
+.row {
+  color:white;
+  text-align: center;
+  min-width: 300px;
+  border: 1px solid darkgray;
+  width: 80%; /* it changes by screen size actually */
+  padding: 5px;
+  display: inline-block
+}
+
+.col {
+  display: inline-block;
+  border-spacing: 1em 0;
+}
+
+.spacing {
+  display: inline-block;
+  margin: 0 1.5%;
+  width: 1%;
+}
