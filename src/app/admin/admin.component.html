@@ -1,4 +1,6 @@
 <app-loggedin-status></app-loggedin-status>
-<app-services-admin [patreonComplete]="admin['patreonAccessToken']" [twitchComplete]="admin['twitchAccessToken']"
-                    [mixerComplete]="admin['twitchAccessToken']"></app-services-admin>
+<app-services-admin [patreonComplete]="admin['patreonAccessToken'] ==1" [twitchComplete]="admin['twitchAccessToken']==1"
+                    [mixerComplete]="admin['mixerAccessToken'] ==1"></app-services-admin>
 <app-discord-servers></app-discord-servers>
+<app-game-servers></app-game-servers>
+<app-admin-other></app-admin-other>

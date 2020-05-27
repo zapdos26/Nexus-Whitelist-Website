@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 import {DiscordServer} from "../_models/DiscordServer";
 import {ShareDiscordServersService} from "../services/share-discord-servers/share-discord-servers.service";
+import {ShareGameServersService} from "../services/share-game-servers/share-game-servers.service";
+import {GameServer} from "../_models/GameServer";
 
 
 @Component({
@@ -14,11 +16,13 @@ import {ShareDiscordServersService} from "../services/share-discord-servers/shar
 })
 export class AdminComponent implements OnInit {
 
-  admin: Object = {patreonAccessToken: false, twitchAccessToken:false, mixerAccessToken:false}
-  servers: DiscordServer[]
+  admin: Object = {patreonAccessToken: 0, twitchAccessToken:0, mixerAccessToken: 0}
+  discordServers: DiscordServer[]
+  gameServers: GameServer[]
 
   constructor(private http:HttpClient, private router: Router,private cookieService: CookieService,
-              private sharedDiscordServers: ShareDiscordServersService) {
+              private sharedDiscordServers: ShareDiscordServersService,
+              private sharedGameServers: ShareGameServersService) {
     this.http.get(environment.apiUrl+ '/admin/current' ,{
       headers: {
         "Authorization": `Bearer ${this.cookieService.get('token')}`
@@ -32,14 +36,21 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sharedDiscordServers.sharedServers.subscribe(servers => this.servers = servers)
+    this.sharedDiscordServers.sharedServers.subscribe(servers => this.discordServers = servers)
+    this.sharedGameServers.sharedServers.subscribe(servers => this.gameServers = servers)
     this.http.get(environment.apiUrl+ '/admin/current/discord/servers' ,{
       headers: {
         "Authorization": `Bearer ${this.cookieService.get('token')}`
       }
     }).subscribe(data => {
       this.sharedDiscordServers.nextMessage(<DiscordServer[]> data)
-      console.log(this.servers)
+    })
+    this.http.get(environment.apiUrl+ '/admin/current/game/all' ,{
+      headers: {
+        "Authorization": `Bearer ${this.cookieService.get('token')}`
+      }
+    }).subscribe(data => {
+      this.sharedGameServers.nextMessage(<GameServer[]> data)
     })
   }
 }

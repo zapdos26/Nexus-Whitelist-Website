@@ -10,7 +10,6 @@ import {ShareDiscordServersService} from "../../../services/share-discord-server
 })
 export class DiscordServersComponent implements OnInit {
 
-  serverSelector = new FormControl('',[])
   servers: DiscordServer[]
   selectedServer: DiscordServer
 

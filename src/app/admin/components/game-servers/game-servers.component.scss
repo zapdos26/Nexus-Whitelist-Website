@@ -1,0 +1,33 @@
+mat-panel-title {
+  justify-content: center !important;
+  color: white;
+}
+
+mat-expansion-panel-header {
+  background: #76b900  !important;
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  height: 30px;
+  color: white;
+  border-radius: 5px;
+  font-size: large;
+  line-height: 1.5;
+  overflow: visible;
+  vertical-align: -.125em;
+  display: block;
+  border: 1px outset hsla(2, 100%, 100%, 0.25);
+}
+mat-expansion-panel {
+  background: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none !important;
+  padding: 10px;
+}
+
+::ng-deep .mat-select-value-text {
+  color:white
+}
+

@@ -1,0 +1,22 @@
+<mat-accordion style="padding: 10px">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Other Settings
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+    <form (ngSubmit)="onSubmit()" style="text-align: center; color: white; font-size: 16px; padding: 10px">
+  <label for="token">Access Token</label>
+  <div>
+    <input [type]="hide ? 'password' : 'text'" id="token" matInput readonly="true" [value]="token">
+    <mat-icon (click)="onClick()" matSuffix>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </div>
+  <div>
+    <button type="submit" color="primary" mat-raised-button>Regenerate</button>
+  </div>
+</form>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+

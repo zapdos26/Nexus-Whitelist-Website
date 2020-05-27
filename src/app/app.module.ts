@@ -12,7 +12,6 @@ import {ServiceStatusComponent} from './components/service-status/service-status
 import {AdminComponent} from './admin/admin.component';
 import {LoggedinStatusComponent} from './components/loggedin-status/loggedin-status.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
-import {MinecraftServerComponent} from './components/minecraft-server/minecraft-server.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -21,24 +20,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
-import {AdminOtherComponent} from './components/admin-other/admin-other.component';
-import {BannedScrollComponent} from './components/banned-scroll/banned-scroll.component';
+import {AdminOtherComponent} from './admin/components/admin-other/admin-other.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import { DiscordCallbackComponent } from './callbacks/discord-callback/discord-callback.component';
+import { DiscordCallbackComponent } from './callbacks/user/discord-callback/discord-callback.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { PatreonCallbackComponent } from './callbacks/patreon-callback/patreon-callback.component';
+import { PatreonCallbackComponent } from './callbacks/user/patreon-callback/patreon-callback.component';
 import {CookieService} from "ngx-cookie-service";
 import { MinecraftComponent } from './dashboard/minecraft/minecraft.component';
 import { ErrorComponent } from './error/error.component';
-import { InterceptorService } from './services/interceptor/interceptor.service';
 import { LicensesComponent } from './licenses/licenses.component';
 import { DiscordRoleComponent } from './admin/components/discord-role/discord-role.component';
 import { AgreementComponent } from './admin/agreement/agreement.component';
-import { TwitchCallbackComponent } from './callbacks/twitch-callback/twitch-callback.component';
+import { TwitchCallbackComponent } from './callbacks/user/twitch-callback/twitch-callback.component';
 import {ServicesAdminComponent} from "./admin/components/services-admin/services-admin.component";
 import {MatExpansionModule} from "@angular/material/expansion";
 import { DiscordServerComponent } from './admin/components/discord-server/discord-server.component';
 import { DiscordServersComponent } from './admin/components/discord-servers/discord-servers.component';
+import { GameServersComponent } from './admin/components/game-servers/game-servers.component';
+import { GameServerComponent } from './admin/components/game-server/game-server.component';
+import { TwitchCallbackAdminComponent } from './callbacks/admin/twitch-callback-admin/twitch-callback-admin.component';
+import { PatreonCallbackAdminComponent } from './callbacks/admin/patreon-callback-admin/patreon-callback-admin.component';
+import { MixerCallbackAdminComponent } from './callbacks/admin/mixer-callback-admin/mixer-callback-admin.component';
+import {JwtInterceptorService} from "./services/JwtInterceptor/jwt-interceptor.service";
+import {ErrorInterceptorService} from "./services/Error-Interceptor/error-interceptor.service";
 
 
 @NgModule({
@@ -52,9 +56,7 @@ import { DiscordServersComponent } from './admin/components/discord-servers/disc
     AdminComponent,
     LoggedinStatusComponent,
     SidebarComponent,
-    MinecraftServerComponent,
     AdminOtherComponent,
-    BannedScrollComponent,
     DiscordCallbackComponent,
     PatreonCallbackComponent,
     MinecraftComponent,
@@ -66,6 +68,11 @@ import { DiscordServersComponent } from './admin/components/discord-servers/disc
     ServicesAdminComponent,
     DiscordServerComponent,
     DiscordServersComponent,
+    GameServersComponent,
+    GameServerComponent,
+    TwitchCallbackAdminComponent,
+    PatreonCallbackAdminComponent,
+    MixerCallbackAdminComponent,
 
   ],
   imports: [
@@ -85,11 +92,8 @@ import { DiscordServersComponent } from './admin/components/discord-servers/disc
     ScrollingModule,
     MatExpansionModule
   ],
-  providers: [CookieService,   {
-    provide: HTTP_INTERCEPTORS,
-    useClass: InterceptorService,
-    multi: true
-  }],
+  providers: [CookieService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

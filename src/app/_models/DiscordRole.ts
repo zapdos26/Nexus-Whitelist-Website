@@ -3,8 +3,8 @@ export class DiscordRole {
   name:string;
   color: string;
   position: number;
-  guildId: number;
-  ownerId: number;
+  guildId: string;
+  ownerId: string;
   configured: boolean = false;
   patreonMinimum: number = null;
   patreonMaximum: number = null;

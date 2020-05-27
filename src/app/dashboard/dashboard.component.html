@@ -15,7 +15,7 @@
   <app-service-status serviceColor='#ff0000' serviceLink='/youtube' [serviceLinked]="userData['youtubeID']!=null" serviceLogo='youtube.png'
                       serviceName='Youtube'></app-service-status>
   <div class="divider"></div>
-  <app-service-status serviceColor='#1fbaed' serviceLink='/mixer' [serviceLinked]="userData['mixerId']!=null" serviceLogo='mixer.svg'
+  <app-service-status serviceColor='#1fbaed' [serviceLink]="mixerURL" [serviceLinked]="userData['mixerId']!=null" serviceLogo='mixer.svg'
                       serviceName='Mixer'></app-service-status>
   <div class="divider"></div>
   <app-service-status serviceColor='#708090' serviceLink="/admin" [serviceLinked]=false

@@ -1,0 +1,100 @@
+<div style="text-align: center">
+  <mat-form-field class="row" >
+    <label>
+      <input matInput  [(ngModel)]="server.name" placeholder="Server Name" required value="{{server.name}}">
+    </label>
+  </mat-form-field>
+  <mat-form-field class="row">
+    <mat-label>Game Type</mat-label>
+    <mat-select [(ngModel)]="server.type" required>
+      <mat-option value="minecraft"> Minecraft</mat-option>
+      <mat-option value="ark"> ARK/ATLAS</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="row">
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.minecraftRegistered" [ngModelOptions]="{standalone: true}">Minecraft Registered</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.steamRegistered"
+                    [ngModelOptions]="{standalone: true}">Steam Registered</mat-checkbox>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.patreonRegistered"
+                    [ngModelOptions]="{standalone: true}">Patreon Registered</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-form-field class="form-input">
+        <label>
+          <input [(ngModel)]="server.patreonMinimum" matInput min="0" oninput="validity.valid||(value='');"
+                 placeholder="Minimum Pledge" required type="number" value="{{server.patreonMinimum}}">
+        </label>
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+    </div>
+    <div class="spacing"></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.twitchRegistered"
+                    [ngModelOptions]="{standalone: true}">Twitch Registered</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.twitchFollow"
+                    [ngModelOptions]="{standalone: true}">Twitch Followed</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.twitchPrime"
+                    [ngModelOptions]="{standalone: true}">Twitch Prime Sub</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.twitch1000"
+                    [ngModelOptions]="{standalone: true}">Twitch Tier 1 Sub ($5)</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.twitch2000"
+                    [ngModelOptions]="{standalone: true}">Twitch Tier 2 Sub ($10)</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.twitch3000"
+                    [ngModelOptions]="{standalone: true}">Twitch Tier 3 Sub ($25)</mat-checkbox>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.mixerRegistered"
+                    [ngModelOptions]="{standalone: true}">Mixer Registered</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.mixerFollow"
+                    [ngModelOptions]="{standalone: true}">Mixer Followed</mat-checkbox>
+    </div>
+    <div class="spacing"></div>
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.mixerSubscribe" [ngModelOptions]="{standalone: true}">Mixer Sub</mat-checkbox>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-checkbox [(ngModel)]="server.youtubeRegistered"
+                    [ngModelOptions]="{standalone: true}">Youtube Registered</mat-checkbox>
+    </div>
+  </div>
+  <div style="padding: 10px">
+    <button (click)="onSubmit()" mat-raised-button color="primary">Save</button>
+    <div class="spacing"></div>
+    <button (click)="onDelete()" mat-raised-button color="warn">Delete</button>
+  </div>
+</div>
+
