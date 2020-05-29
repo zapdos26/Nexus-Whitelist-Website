@@ -43,6 +43,9 @@ import { PatreonCallbackAdminComponent } from './callbacks/admin/patreon-callbac
 import { MixerCallbackAdminComponent } from './callbacks/admin/mixer-callback-admin/mixer-callback-admin.component';
 import {JwtInterceptorService} from "./services/JwtInterceptor/jwt-interceptor.service";
 import {ErrorInterceptorService} from "./services/Error-Interceptor/error-interceptor.service";
+import {MixerCallbackComponent} from "./callbacks/user/mixer-callback/mixer-callback.component";
+import { TosComponent } from './tos/tos.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 @NgModule({
@@ -73,7 +76,9 @@ import {ErrorInterceptorService} from "./services/Error-Interceptor/error-interc
     TwitchCallbackAdminComponent,
     PatreonCallbackAdminComponent,
     MixerCallbackAdminComponent,
-
+    MixerCallbackComponent,
+    TosComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

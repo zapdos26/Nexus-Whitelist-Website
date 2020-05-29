@@ -3,7 +3,7 @@
 </div>
 <div class="center" rows="2">
   <form (ngSubmit)="onSubmit()">
-  <mat-checkbox [formControl]="checked">I have read and agree to the Terms of Service.</mat-checkbox>
+  <mat-checkbox [formControl]="checked">I have read and agree to the <a [routerLink]="['/tos']" style="color:white">Terms of Service.</a></mat-checkbox>
     <p>
       <button type="submit" mat-raised-button color="primary" [disabled]="checked.invalid">Submit</button>
     </p>

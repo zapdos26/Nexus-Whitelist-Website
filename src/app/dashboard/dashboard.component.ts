@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     'client_id=' + environment.twitchClientId +
     '&redirect_uri=' + environment.domain +'/callback/twitch' +
     '&state=' + sessionStorage.getItem('state');
-  mixerURL= 'https://mixer.com/oauth/authorize?response_type=code&scope=subscription:view:self' +
+  mixerURL= 'https://mixer.com/oauth/authorize?response_type=code&scope=subscription:view:self&force_verify=true' +
     '&client_id=' + environment.mixerClientId +
     '&redirect_uri=' + environment.domain + '/callback/mixer' +
     '&state=' + sessionStorage.getItem('state');
