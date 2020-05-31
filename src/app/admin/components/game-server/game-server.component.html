@@ -1,4 +1,9 @@
 <div style="text-align: center">
+  <ng-template [ngIf]="server.id != undefined">
+    <div class="row">
+      Server ID: {{server.id}}
+    </div>
+  </ng-template>
   <mat-form-field class="row" >
     <label>
       <input matInput  [(ngModel)]="server.name" placeholder="Server Name" required value="{{server.name}}">

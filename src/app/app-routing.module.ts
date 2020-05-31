@@ -18,7 +18,7 @@ import {TosComponent} from "./tos/tos.component";
 import {PrivacyComponent} from "./privacy/privacy.component";
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'error', component: ErrorComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},

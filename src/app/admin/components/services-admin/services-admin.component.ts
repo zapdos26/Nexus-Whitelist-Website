@@ -14,7 +14,7 @@ export class ServicesAdminComponent implements OnInit {
   patreonURL = 'https://www.patreon.com/oauth2/authorize?response_type=code' +
     '&client_id='+ environment.patreonClientId +
     '&redirect_uri=' + environment.domain + '/callback/patreon/admin' +
-    '&scope=scope=campaigns campaigns.members&state=' + sessionStorage.getItem('state');
+    '&scope=campaigns campaigns.members&state=' + sessionStorage.getItem('state');
   twitchURL= 'https://id.twitch.tv/oauth2/authorize?response_type=code&force_verify=true' +
     '&scope=channel:read:subscriptions' +
     '&client_id=' + environment.twitchClientId +
